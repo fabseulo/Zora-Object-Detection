@@ -1,7 +1,6 @@
 # Zora-Object-Detection
 
-Questa applicazione permette di effettuare l'object detection di un'immagine, sfruttando i modelli di TensorFlow caricati 
-nel TensorFlow ModelServer.
+Questa applicazione è una simulazione della parte server dell'object detection di un'immagine con il robot Zora, sfruttando i modelli di TensorFlow caricati nel TensorFlow ModelServer.
 
 ## Prerequisiti
 Per utilizzare l'applicazione è necessario scaricare i seguenti pacchetti:
@@ -34,3 +33,4 @@ Avviare quindi l'object detection di un'immagine a scelta (ad esempio harry_megh
 ```bash
 python test.py --image_path=Images_test/harry_meghan.jpg
 ```
+Lo script salva le immagini con i bounding box nella cartella Images_bbx e restituisce i risultati da passare al robot Zora. Quindi una stringa da far pronunciare al robot con le labels degli oggetti trovati, nel caso di maggior certezza; un vettore con le labels dei possibili oggetti nel caso di incertezza e il vettore nullo nel caso non vengano rilevati oggetti.
