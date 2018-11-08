@@ -14,9 +14,22 @@ pip install object-detection
 pip install hdfs
 pip install tensorflow-serving-api
 ```
-Per installare il ModelServer bisogna eseguire i seguenti passaggi:
+Per installare il ModelServer bisogna eseguire i seguenti comandi:
 ```bash
 echo "deb [arch=amd64] http://storage.googleapis.com/tensorflow-serving-apt stable tensorflow-model-server tensorflow-model-server-universal" | sudo tee /etc/apt/sources.list.d/tensorflow-serving.list && \
 curl https://storage.googleapis.com/tensorflow-serving-apt/tensorflow-serving.release.pub.gpg | sudo apt-key add -
+
 apt-get update && apt-get install tensorflow-model-server
+```
+
+## Utilizzo
+
+Avviare innanzitutto il ModelServer con il seguente comando:
+```bash
+tensorflow_model_server --port=9000 --model_config_file='PATH_TO_BE_CONFIGURED/model_server.config'
+```
+Sostituire PATH_TO_BE_CONFIGURED con il path nel proprio computer. Occorre, inoltre modificare anche i path dei modelli all'interno del file **model_server.config**.
+Avviare quindi l'object detecttion di un immagine con il comando:
+```bash
+
 ```
