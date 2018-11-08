@@ -28,8 +28,9 @@ Avviare innanzitutto il ModelServer con il seguente comando:
 ```bash
 tensorflow_model_server --port=9000 --model_config_file='PATH_TO_BE_CONFIGURED/model_server.config'
 ```
-Sostituire PATH_TO_BE_CONFIGURED con il path nel proprio computer. Occorre, inoltre modificare anche i path dei modelli all'interno del file **model_server.config**.
-Avviare quindi l'object detecttion di un immagine con il comando:
-```bash
+Sostituire PATH_TO_BE_CONFIGURED con il path nel proprio computer. Occorre, inoltre, modificare anche i path dei modelli all'interno del file **model_server.config**.
 
+Avviare quindi l'object detection di un'immagine a scelta (ad esempio harry_meghan.jpg nella directory Images_test) con il comando:
+```bash
+python test.py --image_path=Images_test/harry_meghan.jpg
 ```
