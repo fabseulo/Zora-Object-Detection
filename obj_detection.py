@@ -77,7 +77,7 @@ def find_result(image_path, image_name):
     port_result = sock.connect_ex(('localhost', 50070))
     # se la porta e' attiva restituisce 0, altrimenti un valore diverso da 0
     if port_result == 0:  # se l'HDFS e' connesso, vi sposto l'immagine con i bounding box predetti
-        client_hdfs.upload('/user/fabio/images/{}_coco.jpg'.format(image_name),"Images_bbx/{}_coco.jpg".format(image_name))
+        client_hdfs.upload('/zora-object-detection/images/{}_coco.jpg'.format(image_name),"Images_bbx/{}_coco.jpg".format(image_name))
         os.remove("Images_bbx/{}_coco.jpg".format(image_name))
     vowels = ("a", "e", "i", "o", "u")
     bbx_coco = []  # vettore con le coordinate dei bounding box trovati con il COCO Model
@@ -276,7 +276,7 @@ def find_result(image_path, image_name):
         log_string = "I don't know what's in the picture!"
 
     if port_result == 0:  # se l'HDFS e' connesso, creo il file di log con la stringa
-        with client_hdfs.write('/user/fabio/logs/{}.log'.format(image_name)) as writer:
+        with client_hdfs.write('/zora-object-detection/logs/{}.log'.format(image_name)) as writer:
             writer.write(log_string)
 
     return result

@@ -63,12 +63,12 @@ def find_labels(image_path, image_name, stub, request, model, n):
         misc.imsave("Images_bbx/{}_pets.jpg".format(image_name),image_vis) #salva l'array in locale come un'immagine JPEG
         if port_result == 0: #se l'HDFS e' connesso, vi carico l'immagine
             # carico l'immagine nel HDFS
-            client_hdfs.upload('/user/fabio/images/{}_pets.jpg'.format(image_name),'Images_bbx/{}_pets.jpg'.format(image_name))
+            client_hdfs.upload('/zora-object-detection/images/{}_pets.jpg'.format(image_name),'Images_bbx/{}_pets.jpg'.format(image_name))
             os.remove("Images_bbx/{}_pets.jpg".format(image_name))
     else:
         misc.imsave("Images_bbx/{}_people.jpg".format(image_name),image_vis)
         if port_result == 0:
-            client_hdfs.upload('/user/fabio/images/{}_people.jpg'.format(image_name),'Images_bbx/{}_people.jpg'.format(image_name))
+            client_hdfs.upload('/zora-object-detection/images/{}_people.jpg'.format(image_name),'Images_bbx/{}_people.jpg'.format(image_name))
             os.remove("Images_bbx/{}_people.jpg".format(image_name))
 
     #inseriamo le labels trovate nella detection in un vettore da passare allo script obj_detection per formare la stringa
