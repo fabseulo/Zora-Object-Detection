@@ -30,10 +30,10 @@ tensorflow_model_server --port=9000 --model_config_file='PATH_TO_BE_CONFIGURED/m
 ```
 Change PATH_TO_BE_CONFIGURED with the absolute path in your PC and change also the paths of models to load in the server, into the file **model_server.config**.
 
-Then start the object detection of a chosen image (for example harry_meghan.jpg into Images_test directory) with the command:
+Then start the object detection of a chosen image (for example harry_meghan.jpg into **Images_test** directory) with the command:
 ```bash
 python test.py --image_path=Images_test/harry_meghan.jpg
 ```
-This script saves the predicted images with bounding boxes into Images_bbx directory and returns the results that have been sent to Zora into the prototype: a string to be pronounced by robot with the labels of detected objects (case of greater certainty), an array with the labels of possible objects (case of uncertainty) and an empty array if there aren't detected objects.
+This script saves the predicted images with bounding boxes into **Images_bbx** directory and returns the results that have been sent to Zora into the prototype: a string to be pronounced by robot with the labels of detected objects (case of greater certainty), an array with the labels of possible objects (case of uncertainty) and an empty array if there aren't detected objects.
 
 If Hadoop is running, the application saves a log file and the predicted images into HDFS.
