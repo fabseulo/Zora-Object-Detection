@@ -41,8 +41,7 @@ def find_result(image_path, image_name):
     res = stub.Predict(request, 10.0)  # risultati della richiesta di prediction, 10 secs timeout
 
     scores = res.outputs['detection_scores'].float_val  # score degli oggetti trovati in ordine decrescente
-    classes = res.outputs['detection_classes'].float_val  # id delle classi trovate, ordinate con score decrescente
-    # print zip(classes, scores)
+    classes = res.outputs['detection_classes'].float_val  # id delle classi trovate, ordinate con score decrescente  
     # vettore con la posizione normalizzata dei bounding box dell'immagine: ymin, xmin, ymax, xmax
     # i bounding box sono ordinati dal bbx dell'oggetto con score maggiore
     boxes = res.outputs['detection_boxes'].float_val
