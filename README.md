@@ -34,6 +34,6 @@ Then start the object detection of a chosen image (for example harry_meghan.jpg 
 ```bash
 python test.py --image_path=Images_test/harry_meghan.jpg
 ```
-This script saves the predicted images with bounding boxes into Images_bbx directory and returns in output the results that have sent to Zora robot into the prototype: una stringa da far pronunciare al robot con le labels degli oggetti trovati (nel caso di maggior certezza), un vettore con le labels dei possibili oggetti (nel caso di incertezza) e il vettore nullo nel caso non vengano rilevati oggetti.
+This script saves the predicted images with bounding boxes into Images_bbx directory and returns in output the results that have sent to Zora robot into the prototype: a string to be pronounced by robot with the labels of detected objects (case of greater certainty), an array with the labels of possible objects (case of uncertainty) and an empty array if there isn't detected objects.
 
-Se Hadoop è in esecuzione nel computer, l'applicazione salva un file di log e le immagini direttamente in HDFS.
+If Hadoop is running, the application saves a log file and predicted images into HDFS.
