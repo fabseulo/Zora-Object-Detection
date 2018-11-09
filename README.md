@@ -1,9 +1,9 @@
 # Zora-Object-Detection
 
-Questa applicazione è una simulazione della parte server del prototipo di object detection con il robot Zora, sfruttando i modelli di TensorFlow caricati nel TensorFlow ModelServer.
+This application is a simulation of server-side object detection into the prototype with Zora robot, using models loaded in the TensorFlow ModelServer.
 
-## Prerequisiti
-Per utilizzare l'applicazione è necessario scaricare i seguenti pacchetti:
+## Prerequisites
+Before to use the application, you need to download the following packages:
 ```bash
 pip install tensorflow
 pip install grpcio
@@ -13,7 +13,7 @@ pip install object-detection
 pip install hdfs
 pip install tensorflow-serving-api
 ```
-Per installare il ModelServer occorre eseguire i seguenti comandi:
+To install the TensorFlow ModelServer, you need to run the following commands:
 ```bash
 echo "deb [arch=amd64] http://storage.googleapis.com/tensorflow-serving-apt stable tensorflow-model-server tensorflow-model-server-universal" | sudo tee /etc/apt/sources.list.d/tensorflow-serving.list && \
 curl https://storage.googleapis.com/tensorflow-serving-apt/tensorflow-serving.release.pub.gpg | sudo apt-key add -
@@ -22,18 +22,18 @@ sudo apt-get update
 sudo apt-get install tensorflow-model-server
 ```
 
-## Utilizzo
+## Usage
 
-Avviare innanzitutto il ModelServer con il seguente comando:
+First of all, you need to start the Model Server with the following command:
 ```bash
 tensorflow_model_server --port=9000 --model_config_file='PATH_TO_BE_CONFIGURED/model_server.config'
 ```
-Sostituire PATH_TO_BE_CONFIGURED con il path assoluto nel proprio computer. Occorre modificare anche i path assoluti dei modelli da caricare nel ModelServer, all'interno del file **model_server.config**.
+Change PATH_TO_BE_CONFIGURED with the absolute path in your PC and change also the paths of models to load in the server, into the file **model_server.config**.
 
-Avviare quindi l'object detection di un'immagine a scelta (ad esempio harry_meghan.jpg nella directory Images_test) con il comando:
+Then start the object detection of a choosen image (for example harry_meghan.jpg into Images_test directory) with the command:
 ```bash
 python test.py --image_path=Images_test/harry_meghan.jpg
 ```
-Lo script salva le immagini con i bounding box nella directory Images_bbx e restituisce i risultati che nel prototipo sono stati passati al robot Zora: una stringa da far pronunciare al robot con le labels degli oggetti trovati (nel caso di maggior certezza), un vettore con le labels dei possibili oggetti (nel caso di incertezza) e il vettore nullo nel caso non vengano rilevati oggetti.
+This script saves the predicted images with bounding boxes into Images_bbx directory and returns in output the results that into the prototype are passed to Zora robot: una stringa da far pronunciare al robot con le labels degli oggetti trovati (nel caso di maggior certezza), un vettore con le labels dei possibili oggetti (nel caso di incertezza) e il vettore nullo nel caso non vengano rilevati oggetti.
 
 Se Hadoop è in esecuzione nel computer, l'applicazione salva un file di log e le immagini direttamente in HDFS.
