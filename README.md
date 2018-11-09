@@ -30,7 +30,7 @@ tensorflow_model_server --port=9000 --model_config_file='PATH_TO_BE_CONFIGURED/m
 ```
 Change PATH_TO_BE_CONFIGURED with the absolute path in your PC and change also the paths of models to load in the server, into the file **model_server.config**.
 
-Then start the object detection of a choosen image (for example harry_meghan.jpg into Images_test directory) with the command:
+Then start the object detection of a chosen image (for example harry_meghan.jpg into Images_test directory) with the command:
 ```bash
 python test.py --image_path=Images_test/harry_meghan.jpg
 ```
