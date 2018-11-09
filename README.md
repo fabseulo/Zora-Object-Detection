@@ -18,7 +18,7 @@ Per installare il ModelServer bisogna eseguire i seguenti comandi:
 echo "deb [arch=amd64] http://storage.googleapis.com/tensorflow-serving-apt stable tensorflow-model-server tensorflow-model-server-universal" | sudo tee /etc/apt/sources.list.d/tensorflow-serving.list && \
 curl https://storage.googleapis.com/tensorflow-serving-apt/tensorflow-serving.release.pub.gpg | sudo apt-key add -
 
-apt-get update && apt-get install tensorflow-model-server
+sudo apt-get update && apt-get install tensorflow-model-server
 ```
 
 ## Utilizzo
@@ -33,6 +33,6 @@ Avviare quindi l'object detection di un'immagine a scelta (ad esempio harry_megh
 ```bash
 python test.py --image_path=Images_test/harry_meghan.jpg
 ```
-Lo script salva le immagini con i bounding box nella directory Images_bbx e restituisce i risultati da passare al robot Zora. Quindi una stringa da far pronunciare al robot con le labels degli oggetti trovati, nel caso di maggior certezza; un vettore con le labels dei possibili oggetti nel caso di incertezza e il vettore nullo nel caso non vengano rilevati oggetti.
+Lo script salva le immagini con i bounding box nella directory Images_bbx e restituisce i risultati da passare al robot Zora: una stringa da far pronunciare al robot con le labels degli oggetti trovati, nel caso di maggior certezza; un vettore con le labels dei possibili oggetti nel caso di incertezza e il vettore nullo nel caso non vengano rilevati oggetti.
 
 Se Hadoop è in esecuzione nel computer, l'applicazione salva un file di log e le immagini direttamente in HDFS.
