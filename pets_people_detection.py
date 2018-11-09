@@ -61,8 +61,7 @@ def find_labels(image_path, image_name, stub, request, model, n):
     client_hdfs = InsecureClient('http://localhost:50070') #client per accedere al HDFS
     if(model == "pets_model"):
         misc.imsave("Images_bbx/{}_pets.jpg".format(image_name),image_vis) #salva l'array in locale come un'immagine JPEG
-        if port_result == 0: #se l'HDFS e' connesso, vi carico l'immagine
-            # carico l'immagine nel HDFS
+        if port_result == 0: #se l'HDFS e' connesso, vi sposto l'immagine
             client_hdfs.upload('/zora-object-detection/images/{}_pets.jpg'.format(image_name),'Images_bbx/{}_pets.jpg'.format(image_name))
             os.remove("Images_bbx/{}_pets.jpg".format(image_name))
     else:
