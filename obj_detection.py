@@ -41,7 +41,8 @@ def find_result(image_path, image_name):
     res = stub.Predict(request, 10.0)  # risultati della richiesta di prediction, 10 secs timeout
 
     scores = res.outputs['detection_scores'].float_val  # score degli oggetti trovati in ordine decrescente
-    classes = res.outputs['detection_classes'].float_val  # id delle classi trovate, ordinate con score decrescente  
+    classes = res.outputs['detection_classes'].float_val  # id delle classi trovate, ordinate con score decrescente
+    # print zip(classes, scores)
     # vettore con la posizione normalizzata dei bounding box dell'immagine: ymin, xmin, ymax, xmax
     # i bounding box sono ordinati dal bbx dell'oggetto con score maggiore
     boxes = res.outputs['detection_boxes'].float_val
@@ -63,7 +64,7 @@ def find_result(image_path, image_name):
         np.squeeze(scores),
         category_index,
         max_boxes_to_draw=10, # num max di bounding box da visualizzare
-        min_score_thresh=.5,  # soglia minima dei bounding box da visualizzare
+        min_score_thresh=.2,  # soglia minima dei bounding box da visualizzare
         use_normalized_coordinates=True,
         line_thickness=5)  # larghezza linea del contorno dei box
 
@@ -155,9 +156,9 @@ def find_result(image_path, image_name):
                 string += " A person is a " + labels_people[0]
             else:  # ho riconosciuto il sesso di piu' persone
                 if n_man > 1 and n_woman == 0:
-                    string += " The people are men"
+                    string += " There are " + str(n_man) + " men"
                 elif n_man == 0 and n_woman > 1:
-                    string += " The people are women"
+                    string += " There are " + str(n_woman) + " women"
                 elif n_man == 1 and n_woman == 1:
                     string += " There is a man and a woman"
                 elif n_man > 1 and n_woman == 1:
